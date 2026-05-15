@@ -1,4 +1,4 @@
-<?php
+<?php 
 require_once("init.php");
 ?>
 
@@ -11,26 +11,25 @@ require_once("init.php");
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <?php include("header.php"); ?>
+    <?php include("header.php") ?>
 
-    <?php if(!isset($_SESSION["isLogged"])): ?>
+    <main>
 
-        <form action="login.php" method="post">
-            <h1>Авторизация</h1>
+    <form action="login.php" method="post">
+        <h1>Авторизация</h1>
 
-            <label for="login">Логин</label>
-            <input type="text" name="login" required minlength="6" placeholder="login123">
+        <label for="login">Логин</label>
+        <input type="text" name="login" id="login" required>
 
-            <label for="password">Пароль</label>
-            <input type="password" name="password" required minlength="6" placeholder="********">
+        <label for="password">Пароль</label>
+        <input type="password" name="password" id="password" required>
 
-            <button>Войти</button>
-            <p>Еще не зарегистрированы? <a href="index.php">Регистрация</a></p>
-        </form>
+        <button>Авторизоваться</button>
+        <p>Еще не зарегистрированы? <a href="index.php">Регистрация</a></p>
+    </form>
 
-    <?php endif; ?>
+    </main>
 
     <?php showMessage(); ?>
-
 </body>
 </html>

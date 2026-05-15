@@ -1,6 +1,6 @@
 <?php
-session_start();
 require_once("connect.php");
+session_start();
 
 function showMessage() {
     if(isset($_SESSION["msg"])) {
@@ -9,7 +9,7 @@ function showMessage() {
     }
 }
 
-function requireAuth() {
+function requireLogin() {
     if(!isset($_SESSION["isLogged"])) {
         header("Location: index.php");
         exit;
@@ -22,4 +22,3 @@ function requireAdmin() {
         exit;
     }
 }
-

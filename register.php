@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once("init.php");
 
 if($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -7,11 +7,12 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
     $fio = $_POST["fio"];
     $phone = $_POST["phone"];
     $email = $_POST["email"];
+    $error = "";
 
     $check = $conn->query("SELECT * FROM users WHERE login='$login'");
-    if($check->num_rows > 0) {
+    if($check->num_rows > 0) {  
         $error = "Данный логин уже занят";
-    }   
+    }
 
     if($error) {
         $_SESSION["msg"] = $error;
@@ -19,8 +20,8 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
         exit;
     }
 
-    $sql = "INSERT INTO users(login, password, fio, phone, email) 
-    VALUES ('$login','$password','$fio','$phone','$email')";
+    $sql = "INSERT INTO users (login, password, fio, phone, email) 
+    VALUES ('$login', '$password', '$fio', '$phone', '$email')";
 
     if($conn->query($sql)) {
         $_SESSION["isLogged"] = true;
@@ -31,8 +32,8 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
         exit;
     } else {
         $_SESSION["msg"] = "Ошибка регистрации" . $conn->error;
-        header("Location: index.php");
-        exit;
-    }
 
+        header("Location: index.php");
+        exit;            
+    }
 }
