@@ -1,7 +1,4 @@
-<?php 
-require_once("init.php");
-requireLogin();
-?>
+<?php require_once("init.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">

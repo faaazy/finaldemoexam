@@ -1,7 +1,5 @@
 <?php
-session_start();
-unset($_SESSION);
+require_once("init.php");
 session_destroy();
-header("Location: index.php");
-exit;
+redirectMsg("Вы успешно вышли", "index.php");
 ?>

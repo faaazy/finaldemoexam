@@ -4,31 +4,24 @@ require_once("init.php");
 if($_SERVER["REQUEST_METHOD"] === "POST") {
     $login = $_POST["login"];
     $password = $_POST["password"];
-
-    $check = $conn->query("SELECT * FROM users WHERE login='$login' AND password='$password'");
     
     if($login === "Admin26" && $password === "Demo20") {
         $_SESSION["isAdmin"] = true;
         $_SESSION["isLogged"] = true;
-        $_SESSION["msg"] = "Вы успешно вошли в систему";
 
-        header("Location: admin.php");
-        exit;
+        redirectMsg("Вы успешно вошли в систему", "admin.php");
     }
+
+    $check = $conn->query("SELECT * FROM users WHERE login='$login' AND password='$password'");
 
     if($check->num_rows > 0) {
         $user = $check->fetch_assoc();
         $_SESSION["id_user"] = $user["id"];
 
         $_SESSION["isLogged"] = true;
-        $_SESSION["msg"] = "Вы успешно авторизовались!";
 
-        header("Location: index.php");
-        exit;
+        redirectMsg("Вы успешно авторизовались!", "index.php");
     } else {
-        $_SESSION["msg"] = "Неверный логин или пароль";
-        
-        header("Location: login_form.php");
-        exit;
+        redirectMsg("Неверный логин или пароль!", "index.php");
     }
 }

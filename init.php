@@ -1,5 +1,11 @@
 <?php
-require_once("connect.php");
+$conn = new mysqli("localhost", "root", "", "finaldemo");
+
+if(!$conn) {
+    echo "Ошибка подключения:" . $conn->connect_error;
+    exit;
+}
+
 session_start();
 
 function showMessage() {
@@ -9,16 +15,9 @@ function showMessage() {
     }
 }
 
-function requireLogin() {
-    if(!isset($_SESSION["isLogged"])) {
-        header("Location: index.php");
-        exit;
-    }
-}
-
-function requireAdmin() {
-    if(!isset($_SESSION["isAdmin"])) {
-        header("Location: index.php");
-        exit;
-    }
+function redirectMsg($msg, $link) {
+    $_SESSION["msg"] = $msg;
+    
+    header("Location: $link");
+    exit;
 }

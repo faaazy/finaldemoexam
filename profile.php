@@ -1,6 +1,5 @@
 <?php
 require_once("init.php");
-requireLogin();
 
 $id_user = $_SESSION["id_user"];
 
@@ -30,14 +29,13 @@ $apps = $conn->query("SELECT * FROM app WHERE id_user='$id_user'");
                 <img src="./course-5.jpg" alt="">
             </div>
             <button onclick="move(-1)" class="slider-btn prev"><</button>
-            <button onclick="move(1)" class="slider-btn next">></div>
+            <button onclick="move(1)" class="slider-btn next">></button>
         </div>
 
     <div class="table-wrap">
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Место</th>
                     <th>Дата начала</th>
                     <th>Способ оплаты</th>
@@ -48,14 +46,12 @@ $apps = $conn->query("SELECT * FROM app WHERE id_user='$id_user'");
             <tbody>
                 <?php while($row = $apps->fetch_assoc()): ?>
                     <tr>
-                        <td><?= $row["id"] ?></td>
                         <td><?= $row["place"] ?></td>
                         <td><?= $row["date_start"] ?></td>
                         <td><?= $row["payment_method"] ?></td>
                         <td><?= $row["status"] ?></td>
-                        <td><?= $row["status"] === "Новая" 
-                            ? "<button disabled class='btn-rate'>Оценить</button>" 
-                            : "<button class='btn-rate'>Оценить</button>"?>
+                        <td>
+                            <button <?= $row["status"] === "Новая" ? "disabled" : "" ?> class='btn-rate'>Оценить</button>
                         </td>
                     </tr>
                 <?php endwhile; ?>

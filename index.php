@@ -25,7 +25,7 @@ require_once("init.php");
                 <img src="./course-5.jpg" alt="">
             </div>
             <button onclick="move(-1)" class="slider-btn prev"><</button>
-            <button onclick="move(1)" class="slider-btn next">></div>
+            <button onclick="move(1)" class="slider-btn next">></button>
         </div>
 
         <p class="welcome-text">Добро пожаловть в Банкетам.Нет - Организация праздников любой сложности!</p>

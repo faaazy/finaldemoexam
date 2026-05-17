@@ -11,16 +11,8 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
     VALUES ('$id_user', '$place', '$date_start', '$payment_method')";
 
     if($conn->query($sql)) {
-        $_SESSION["msg"] = "Заявка успешно отправлена!";
-
-        header("Location: index.php");
-        exit;
+        redirectMsg("Заявка успешно отправлена!", "index.php");
     } else {    
-        $_SESSION["msg"] = "Ваша заявка не отправлена";
-
-        header("Location: app_form.php");
-        exit;
+        redirectMsg("Ваша заявка не отправлена!", "app_form.php");
     }
-
-
 }
