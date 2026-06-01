@@ -102,8 +102,7 @@ $statuses = ["Новая", "Банкет назначен", "Банкет зав
             <?php endfor; ?>
         </div>
     </main>
-
-
+    
     <?php showMessage(); ?>
 </body>
 </html>
